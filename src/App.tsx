@@ -3,6 +3,8 @@ import SideBar from "./components/SideBar/SideBar"
 import ChatContainer from './components/ChatContainer/ChatContainer';
 import { useState, useRef } from 'react';
 import { ChatMessageContext } from './contexts/ChatMessageContext';
+import { ToastContainer } from 'react-toastify';
+
 export default function App() {
   /* allChatMessage contains ALL chat message between User and ChatGPT */
   const [allChatMessage, setAllChatMessage] = useState<string[]>([]);
@@ -25,6 +27,7 @@ export default function App() {
       <ChatMessageContext.Provider
         value={{ apiTriggerFlag, allChatMessage, setAllChatMessage, allUserMessage, setAllUserMessage, isLoading, setIsLoading }}
       >
+
         <Grid gutter={0} grow>
           <Grid.Col span={1}><SideBar /></Grid.Col>
           <Grid.Col span={8}> <ChatContainer /></Grid.Col>
