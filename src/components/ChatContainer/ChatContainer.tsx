@@ -25,7 +25,8 @@ export default function ChatContainer() {
         // This code will run only after the component has mounted
         if (apiTriggerFlag.current) {
             console.log("UseEffect called! ")
-            axios.post('http://localhost:5000/api/request', allUserMessage)
+            axios.post('http://studentgptbe-production.up.railway.app/api/request', allUserMessage)
+            // axios.post('http://localhost:5000/api/request', allUserMessage)
                 .then(response => {
                     console.log(allUserMessage)
                     const newMessage = response as ChatMessageType
