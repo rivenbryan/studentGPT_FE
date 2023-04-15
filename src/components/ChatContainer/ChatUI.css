@@ -1,0 +1,23 @@
+/* ChatUI.css */
+.chat-container {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(0deg, #343541, #343541);
+    
+    
+  }
+  
+  .messages-container {
+    height: calc(100% - 100px);
+    overflow-y: auto;
+  }
+  
+  .input-container {
+    position: absolute;
+    bottom: 1;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    
+  }
+  
