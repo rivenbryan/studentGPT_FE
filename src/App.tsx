@@ -3,7 +3,7 @@ import SideBar from "./components/SideBar/SideBar"
 import ChatContainer from './components/ChatContainer/ChatContainer';
 import { useState, useRef } from 'react';
 import { ChatMessageContext } from './contexts/ChatMessageContext';
-import { ToastContainer } from 'react-toastify';
+import { useMediaQuery } from '@mantine/hooks';
 
 export default function App() {
   /* allChatMessage contains ALL chat message between User and ChatGPT */
@@ -17,6 +17,10 @@ export default function App() {
 
   /* apiTriggerFlag is used as a flag to set API to be used or not to be used */
   const apiTriggerFlag = useRef(false);
+
+  const largeScreen = useMediaQuery('(min-width: 500px)');
+  console.log(largeScreen)
+
   return (
     <MantineProvider
       withGlobalStyles
@@ -29,8 +33,8 @@ export default function App() {
       >
 
         <Grid gutter={0} grow>
-          <Grid.Col span={1}><SideBar /></Grid.Col>
-          <Grid.Col span={8}> <ChatContainer /></Grid.Col>
+          {largeScreen && <Grid.Col span={1}><SideBar /></Grid.Col>}
+          <Grid.Col span={10}> <ChatContainer /></Grid.Col>
         </Grid>
       </ChatMessageContext.Provider>
     </MantineProvider>
