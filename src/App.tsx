@@ -33,7 +33,7 @@ export default function App() {
       >
 
         <Grid gutter={0} grow>
-          {largeScreen && <Grid.Col span={1}><SideBar /></Grid.Col>}
+          {largeScreen && <Grid.Col span={2}><SideBar /></Grid.Col>}
           <Grid.Col span={10}> <ChatContainer /></Grid.Col>
         </Grid>
       </ChatMessageContext.Provider>
