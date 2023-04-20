@@ -17,8 +17,8 @@ export default function ChatImageUploadButton() {
     formData.append('image', file);
 
     try {
-      // const response = await axios.post('https://studentgptbe-production.up.railway.app/api/upload', formData);
-      const response = await axios.post('http://localhost:5000/api/upload', formData);
+      const response = await axios.post('https://studentgptbe-production.up.railway.app/api/upload', formData);
+      // const response = await axios.post('http://localhost:5000/api/upload', formData);
       console.log(response.data)
       setAllUserMessage((prevArrayUserMessages: any) => {
         const newArrayOfUserMessages: string[] = [...prevArrayUserMessages];
