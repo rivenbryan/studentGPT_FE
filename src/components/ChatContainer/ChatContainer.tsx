@@ -101,7 +101,7 @@ export default function ChatContainer() {
                 <div className="messages-container">
                     {allChatMessage.length == 0 && <ChatGptLogo/>}
                     <ChatContent allChatMessage={allChatMessage} />
-                    <LoadingOverlay loader={Loader} visible={isLoading} />;
+                    <LoadingOverlay loader={Loader} visible={isLoading} />
                 </div>
                 <div className="input-container">
                     <Input handleSubmit={handleSubmit} form={form} />
