@@ -13,17 +13,16 @@ type InputProps = {
     }) => {
         value: string;
     }>,
-    isLoading: boolean
 }
 
-export default function Input({ handleSubmit, form, isLoading }: InputProps) {
+export default function Input({ handleSubmit, form }: InputProps) {
     return (
         <>
             <form onSubmit={handleSubmit}>
                 <Group position="center" mt="xs">
-                    <TextInput disabled={isLoading} placeholder="Type something here..." color="white" size="md"
+                    <TextInput  placeholder="Type something here..." color="white" size="md"
                         style={{ width: "50%" }}{...form.getInputProps('value')} icon={<AiOutlineSend/>} 
-                        rightSection={isLoading ? <Loader color="gray" size="xs" />: <ChatImageUploadButton /> } />
+                        rightSection={<ChatImageUploadButton /> } />
                 </Group>
             </form>
 

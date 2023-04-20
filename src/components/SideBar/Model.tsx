@@ -14,7 +14,7 @@ export default function Model({opened, close}: ModelProps) {
     <br/>
     <Text>Developed by Bryan </Text>
     <br/>
-    <Text  fz="xs" color="grey">Source Code: <a href="https://github.com/rivenbryan/chatGPT-helper">Click here!</a></Text>
+    <Text  fz="xs" color="grey">Source Code: <a href="https://github.com/rivenbryan?tab=repositories">Click here!</a></Text>
   </Modal>
 
   );

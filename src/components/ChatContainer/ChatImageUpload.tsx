@@ -1,14 +1,13 @@
 import { useState, useContext } from 'react';
 import { FileButton, Button, Group, Text } from '@mantine/core';
 import { AiOutlineFileImage } from "react-icons/ai";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { ChatMessageContext } from '../../contexts/ChatMessageContext';
 export default function ChatImageUploadButton() {
   const { setAllUserMessage, setIsLoading, isLoading } = useContext(ChatMessageContext);
   const [file, setFile] = useState<File | null>(null);
-  const [error, setError] = useState<string>("")
   const handleUpload = async (file: File) => {
     console.log("handleUpload button clicked!")
     if (!file) return;
@@ -18,7 +17,7 @@ export default function ChatImageUploadButton() {
 
     try {
       const response = await axios.post('https://studentgptbe-production.up.railway.app/api/upload', formData);
-      // const response = await axios.post('http://localhost:5000/api/upload', formData);
+      // const response = await axios.post('http://localhost:5000/api/upload', formData)
       console.log(response.data)
       setAllUserMessage((prevArrayUserMessages: any) => {
         const newArrayOfUserMessages: string[] = [...prevArrayUserMessages];
@@ -28,7 +27,17 @@ export default function ChatImageUploadButton() {
       });
 
     } catch (error) {
-      console.error('Error:', error);
+      toast.error('There was an error in converting the image to text. Your file may be too large', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+      setIsLoading(false)
     }
   };
 
@@ -52,8 +61,7 @@ export default function ChatImageUploadButton() {
 
   return (
     <>
-      <ToastContainer
-      />
+
 
       <FileButton
         onChange={handleSelectAndUpload}

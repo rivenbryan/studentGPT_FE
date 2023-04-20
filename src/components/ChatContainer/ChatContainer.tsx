@@ -8,6 +8,8 @@ import Input from './Input';
 import ChatGptLogo from './ChatGptLogo';
 import './ChatUI.css';
 import { ChatMessageContext } from '../../contexts/ChatMessageContext';
+import { LoadingOverlay } from '@mantine/core';
+import {Loader} from '../Loader';
 export default function ChatContainer() {
     const {apiTriggerFlag, allChatMessage, setAllChatMessage, allUserMessage, setAllUserMessage, isLoading, setIsLoading } = useContext(ChatMessageContext);
 
@@ -49,7 +51,9 @@ export default function ChatContainer() {
                      */
                     setIsLoading(false)
                 })
-                .catch(error => console.error(error));
+                .catch(error => {
+                    console.log(error)
+                });
         } else {
             /*
             * When useEffect is run for the first time, it sets isMountedRef to True
@@ -97,9 +101,10 @@ export default function ChatContainer() {
                 <div className="messages-container">
                     {allChatMessage.length == 0 && <ChatGptLogo/>}
                     <ChatContent allChatMessage={allChatMessage} />
+                    <LoadingOverlay loader={Loader} visible={isLoading} />;
                 </div>
                 <div className="input-container">
-                    <Input handleSubmit={handleSubmit} form={form} isLoading={isLoading} />
+                    <Input handleSubmit={handleSubmit} form={form} />
                 </div>
             </div>
     )
